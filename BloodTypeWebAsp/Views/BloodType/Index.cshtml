@@ -1,0 +1,156 @@
+﻿@using BloodTypeWeb.Models;
+
+@model BloodTypeRhFactorModel
+
+@{
+    ViewData["Title"] = "Blood Type Calculator";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BloodTypeWeb</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Alice&display=swap" rel="stylesheet">
+    <style>
+        @@import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Alice,sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .form-container {
+            position: relative;
+            z-index: 1;
+            background: lavender;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            font-weight: 500;
+            margin-bottom: .5rem;
+        }
+
+
+         .form-control {
+            display: block;
+            width: 100%;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #6a1b9a; 
+            background-color: white; 
+            background-clip: padding-box;
+            border: 1px solid white; 
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+
+        .form-control :focus {
+                border-color: #D3D3E6; 
+                box-shadow: 0 0 0 0.2rem rgba(230, 230, 250, 0.5); 
+                
+            }
+
+
+        
+        .submit-btn {
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: .25rem;
+            color: #fff;
+            background-color: #6a1b9a;
+            border-color: none;
+            padding: .375rem .75rem;
+            cursor: pointer;
+        }
+
+       .submit-btn:hover {
+                background-color: mediumpurple;
+                border-color: none;
+                color: white;
+       }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="~/Images/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-container">
+                    @using (Html.BeginForm("Calculate", "BloodType", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        <h2>Calculate Child's Blood Type</h2>
+                        <div class="form-group">
+                            <label for="MotherBloodType">Mother's Blood Type:</label>
+                            <select name="MotherBloodType" id="MotherBloodType" class="form-control">
+                                <option value="O">O</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="AB">AB</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="MotherRhFactor">Mother's Rh Factor:</label>
+                            <select name="MotherRhFactor" id="MotherRhFactor" class="form-control">
+                                <option value="+">+</option>
+                                <option value="-">-</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="FatherBloodType">Father's Blood Type:</label>
+                            <select name="FatherBloodType" id="FatherBloodType" class="form-control">
+                                <option value="O">O</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="AB">AB</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="FatherRhFactor">Father's Rh Factor:</label>
+                            <select name="FatherRhFactor" id="FatherRhFactor" class="form-control">
+                                <option value="+">+</option>
+                                <option value="-">-</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Calculate</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
