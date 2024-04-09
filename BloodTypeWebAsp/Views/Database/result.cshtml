@@ -1,0 +1,110 @@
+﻿@model IEnumerable<BloodTypeWeb.Models.ParentCombinationRh>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Query Result</title>
+    <style>
+        /* Provided CSS styles */
+        @@import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Alice, sans-serif;
+            overflow: hidden;
+        }
+
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .results-container {
+            position: relative;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            margin: 5% auto;
+            max-width: 600px;
+            color: black;
+            transition: transform 0.3s ease;
+        }
+
+            .results-container:hover {
+                transform: translate(10px, -10px);
+            }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="~/Images/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="results-container">
+                    <h2>Query Result</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Child Blood Type</th>
+                                <th>Child Rh Factor</th>
+                                <th>Probability</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var parentCombination in Model)
+                            {
+                                foreach (var childOutcome in parentCombination.ChildOutcomes)
+                                {
+                                    <tr>
+                                        <td>@childOutcome.ChildBloodType.BloodTypeName</td>
+                                        <td>@childOutcome.ChildRhFactor.RhFactorType</td>
+                                        <td>@childOutcome.Probability</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for text appearance on hover -->
+    <script>
+        const container = document.querySelector('.results-container');
+        container.addEventListener('mouseover', function () {
+            const paragraphs = this.querySelectorAll('p');
+            paragraphs.forEach(paragraph => paragraph.style.opacity = '1');
+        });
+
+        container.addEventListener('mouseout', function () {
+            const paragraphs = this.querySelectorAll('p');
+            paragraphs.forEach(paragraph => paragraph.style.opacity = '0');
+        });
+    </script>
+</body>
+</html>
+

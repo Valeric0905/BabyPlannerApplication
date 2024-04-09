@@ -1,0 +1,581 @@
+﻿
+
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/BloodTypeWeb.styles.css" asp-append-version="true" />
+<link href="https://fonts.googleapis.com/css2?family=Alice&display=swap" rel="stylesheet">
+<style>
+    @@import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
+
+/* Global */
+* {
+  box-sizing: border-box;
+}
+body{
+  color: #090b08;
+  margin:  0;
+  font-family: 'Alice', sans-serif;
+  font-weight: 300;
+  background-color: lavender;
+}
+
+   
+h1{
+  font-size: 1.7em;
+  font-weight: 700;
+  line-height: 1.5em;
+  text-transform: uppercase;
+}
+h2{
+  text-transform: uppercase;
+}
+h4{
+  font-size: .8em;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+h6{
+  font-weight: 500;
+}
+a{
+  text-decoration: none;
+  color: #090b08;
+}
+ul{
+  list-style: none;
+}
+section{
+  padding: 5.8em 2em 0;
+}
+.title{
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: 1em;
+}
+.title.title-right{
+  justify-content: flex-end;
+}
+.line{  
+  width: 3em;
+  height: 1px;
+  background-color: #000;
+  margin-right: 1em;
+}
+.line.line-right{
+  order: 2;
+  margin-right: 0;
+  margin-left: 1em;
+}
+.btn{
+  display: inline-block;
+  padding: .5em 1.5em;
+  border: solid 1px #090b08;  
+  transition: all .3s ease-in;
+        background-color: #6a1b9a; /* Button background color */
+        color: white; /* Text color */
+}
+.btn:hover, .btn:focus{
+  transform: translate(0px, -2px);
+  -webkit-box-shadow: 0px 10px 7px -9px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 10px 7px -9px rgba(0,0,0,0.75);
+  box-shadow: 0px 10px 7px -9px rgba(0,0,0,0.75);
+  transition: all .3s ease-out; 
+}
+
+    .image-footer {
+        width: 100%; /* Ensures the div takes up the full width of the footer */
+        overflow: hidden; /* Prevents the image from overflowing the div if it's too big */
+    }
+
+        .image-footer img {
+            width: 100%; /* Stretches the image to cover the full width of the .image-footer */
+            height: 100%; /* Maintains the aspect ratio of the image */
+            display: block; /* Removes any default inline margins/padding */
+        }
+
+
+
+/* Hero Section */
+    .hero {
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        background: #f5d9d6 url("/Images/1.png") no-repeat right bottom;
+      
+        width: 100vw;
+        position: relative; /* If you plan to use absolute positioning inside */
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw; /* Half of 100vw to the left */
+        margin-right: -50vw;
+        padding: 0 2em 7.5em;
+        overflow: hidden;
+    }
+.hero-img img{
+  display: none;
+}
+.hero-text{
+  padding: 0 2em 10em;
+}
+
+/* Featured Section */
+#featured .image img{
+  width: 100%;
+  height: auto;
+}
+.text{
+  text-align: center;
+  padding-top: 1em;
+}
+.text p{
+  text-align: justify;
+  padding-bottom: 1em;
+  line-height: 1.4em;
+}
+
+/* Collections Section */
+.box{
+  display: block;
+  position: relative;
+  padding: 1.3em;
+  background-color: #f5d9d6;
+  text-align: center;
+  margin-bottom: 2em;
+}
+.box-overlay {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+	border: solid 3px #fff;
+	transform: translate(8px, 8px);
+  transition: all 1s ease;
+}
+.box:last-child{
+  margin-bottom: 5.8em;
+}
+.box:hover .box-overlay,
+.box:focus .box-overlay
+{
+  transform: translate(0px, 0px) scale(0.92, 0.8);
+}
+
+/* About Section */
+#about{
+  background-color: #f5d9d6;
+}
+section#about{
+  padding-bottom: 5.8em;
+}
+#about .text{
+  padding-top: 0;
+  margin-top: 0;
+  padding-bottom: 2em;
+}
+#about .text p{
+  padding-bottom: 0;
+  text-align: left;
+}
+.video-wrapper{
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  overflow: hidden;
+  height: 0;
+}
+.video-wrapper iframe{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Contact Section */
+section#contact{
+  padding: 3em 2em .5em;
+}
+.form-wrapper:after,
+.contact-wrapper:after{
+  display: block;
+  content: "";
+  margin: 2em auto;
+  border-bottom: solid 1px #dadada;
+}
+form{
+  display: flex;
+}
+form input:first-child{
+  flex: 1 0 80%;
+  background-color: transparent;
+}
+form input:last-child{
+  flex: 1 0 20%;
+  border-left: 0;  
+  cursor: pointer;
+  background-color: #f5d9d6;
+  transition: all .25s ease;
+}
+#submit:hover {
+	background-color: #000;
+	color: #fff;
+  transition: all .25s ease;
+}
+input{
+  padding: 1em;
+  border: 1px solid #000;
+}
+.contact-wrapper .wrapper{
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+}
+.contact-wrapper .social-menu{
+  flex: 1 0 100%;
+  justify-content: center;
+}
+.contact-wrapper .social-menu li a {
+	font-size: 1.5em;
+  padding: 0;
+  margin: 0 1.5em 0 0;
+}
+.contact-wrapper a i{
+  width: 100%;
+  padding-bottom: .2em;
+}
+.contact-footer{
+  padding: 1em 0;
+  border: 1px solid #000;
+}
+.contact-footer:last-child{
+  border-left: 0;
+}
+.contact-footer:hover{
+  background-color: #f5d9d6;
+}
+.contact-tel{
+  flex: 1 0 50%;
+}
+.contact-email{
+  flex: 1 0 50%;
+}
+.copy-wrapper a{
+  font-weight: 700;
+}
+
+/* Responsive Style */
+@@media(min-width: 320px){
+  
+}
+@@media(min-width: 576px){
+  /*  Global  */
+  h1{
+    font-size: 2em;
+  }
+  
+  /*  Hero Section  */
+  .hero{
+            background-image: url("/Images/1.png");
+            background-size: 100% 150%;
+            justify-content: right;
+            overflow: hidden;
+  }
+  
+  .hero-text{
+    padding: 0 2em;
+            max-width: 70%; /* Allow text to take full width on smaller screens */
+            text-align: right;
+            color: #373f42;
+        }
+  
+  /*  Featured Section  */
+  .text{
+    margin: 2em 2em auto;
+  }
+  
+  /*  Collections Section  */
+  #collections .wrapper{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .box{
+    padding: 3.2em;
+  }
+  .box1{
+    flex: 1 0 47%;
+    margin-right: 1em;
+  }
+  .box2{
+    flex: 1 0 47%;
+  }
+  .box3{
+    flex: 2 0 100%;
+  }
+  
+  /*  About Section  */
+  .video-wrapper{
+    margin: 0 2em;
+  }
+}
+@@media(min-width: 768px){
+  /*  Global  */
+  .wrapper{
+    display: flex;
+  }
+  
+  
+  
+  /*  Featured Section  */  
+  .text{
+    text-align: left;    
+    margin: 0 0 auto 4em;
+  }
+  #featured .text{
+    flex: 1;
+    order: 1;
+  }
+  #featured .image{
+    flex: 1 0 12em;
+    order: 2;
+  }
+  
+  /*  Collections Section  */
+  #collections .wrapper{
+    margin: 0 4em;
+  }
+  
+  /*  About Section  */
+  #about .wrapper{
+    display: block;
+  }
+  #about .text{
+    margin-right: 4em;
+  }
+  .video-wrapper{
+    margin: auto 4em;
+  }
+  
+  /* Contact Section  */
+  #contact .wrapper{
+    flex-wrap: wrap;
+  }
+  .form-wrapper, .contact-wrapper{
+    flex: 1 0 50%;
+    align-self: center;
+    padding: 0 1em;
+  }
+  .copy-wrapper{
+    flex: 1 0 100%;
+    padding: 0 1em;
+  }
+  .form-wrapper:after,
+  .contact-wrapper:after{
+    display: none;
+  }
+  .contact-footer{
+    border: 0;
+    padding: 0;
+    margin: .6em auto;
+    text-align: left;
+  }
+  .contact-footer:hover{
+    background-color: transparent;
+  }
+  .contact-wrapper a.contact-footer:hover i{
+    
+  }
+  .contact-wrapper a i{
+    width: auto;
+    padding-right: 1em;
+  }
+  .contact-wrapper .social-menu{
+    display: flex;
+    order: 3;
+    justify-content: flex-start;
+  }
+  .contact-wrapper .social-menu a i{
+    padding-right: 0;
+  }
+  .copy-wrapper:before{
+    display: block;
+    content: "";
+    margin: 2em auto;
+    border-bottom: solid 1px #dadada;
+  }
+}
+@@media(min-width: 992px){
+  /*  Global  */
+  section{
+    padding: 5.8em 7em 0;
+  }  
+  .title.title-left{
+    margin-left: -2.5em;
+  }
+  .title.title-right{
+    margin-right: -2.5em;
+  }
+  .line{
+    width: 5.5em;
+  }
+  
+  /*  Hero Section  */
+  .hero-img img{
+    width: 14.5em;
+  }
+  
+  /*  Featured Section  */
+  #featured .image{
+    margin-top: -2em;
+  }
+  
+  /* About Section  */
+  #about .wrapper{
+    display: flex;
+  }
+  #about .text{
+    flex: 1 0 40%;
+    margin-right: 1em;
+    padding-bottom: 0;
+  }
+  .video-wrapper{
+    flex: 2 0 55%;
+    padding-bottom: 33.25%;
+    align-self: center;
+    margin: 1.4em 0;        
+  }
+  .contact-tel{
+    flex-basis: 20%;
+  }
+}
+@@media(min-width: 1200px){
+  /*  Global  */
+  h1{
+    font-size: 2.4em;
+  }
+  section{
+    padding: 5.8em 11em 0;
+  }
+  
+  /*  Hero Section  */
+  .hero-img img{
+    width: 15.5em;
+  }
+  
+  /*  Featured Section  */
+  #featured .image{
+    margin-top: -4em;
+  }
+  
+  /*  About Section  */
+  #about .text{
+    padding-right: 3em;
+    padding-bottom: 0;
+  }
+  .video-wrapper{
+    margin: 0;
+  }
+}
+</style>
+
+<!-- Hero Section -->
+<div class="hero">
+   
+    <div class="hero-text">
+        <h1>Welcome to Baby Planner!</br> Your journey to parenthood</h1>
+        <a href="#featured" class="btn">Explore</a>
+    </div>
+</div>
+
+<!-- Featured Section -->
+<section id="featured">
+    <div class="title title-left">
+        <span class="line"></span><h3>Blood Type & Rh Factor</h3>
+    </div>
+    <div class="wrapper">
+        <div class="image">
+            <img src="~/Images/2.png" alt="Pixel Facial Cream">
+        </div>
+        <div class="text">
+            <h2>Blood type and Rh Factor calculator</h2>
+            <p>If you're eager to discover more about the unique genetic blend that will define your baby, our Blood Type and Rh Factor Calculator is here to guide you. Just click on the button to begin this intriguing journey and embrace the wonders of what the future holds for your growing family. Unveil the mysteries of genetics with a simple click and take one more step toward understanding and preparing for your child's needs.</p>
+            <a href="/bloodType/index" class=btn>Calculate</a>
+           
+        </div>
+    </div>
+</section>
+
+<!-- Collection Section -->
+<section id="collections">
+    <div class="title title-right">
+        <span class="line line-right"></span><h3>Blog</h3>
+    </div>
+    <div class="wrapper">
+        <a class="box box1" href="#">
+            <h4>Genetics of Eye Color</h4>
+            <div class="box-overlay"></div>
+        </a>
+        <a class="box box2" href="#">
+            <h4>How Genes Determine What Your Baby Will Look Like</h4>
+            <div class="box-overlay"></div>
+        </a>
+        <a class="box box3" href="#">
+            <h4>Conception and your baby's genes</h4>
+            <div class="box-overlay"></div>
+        </a>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+    <div class="title title-left">
+        <span class="line"></span><h3>Rh factor conflict during pregnancy and pospartum</h3>
+    </div>
+    <div class="wrapper">
+        <div class="text">
+            <p>When you're expecting a baby, your body goes through many changes, and there's so much to learn about keeping both you and your baby healthy.</p>
+            <p>If you're Rh-negative and your baby is Rh-positive, there's a tiny chance your body might react to your baby's blood as if it were something foreign. This is very rare, but doctors are great at taking care of it nowadays. One simple treatment can help protect your baby and future pregnancies too. It involves getting a special shot called Rh immunoglobulin or RhoGAM. This shot stops your body from reacting to your baby's Rh-positive blood cells.</p>
+            <p></p>
+            <p></p>
+            <a href="/bloodType/index" class=btn>Learn more</a>
+        </div>
+        <div class="video-wrapper">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/e2KK86bekNw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          
+        </div>
+
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <div class="wrapper">
+        <div class="form-wrapper">
+            <h4>Add More Beauty To Your Email</h4>
+            <form id="form" action="https://www.freecodecamp.com/email-submit">
+                <input type="email" id="email" name="email" placeholder="Your email" required>
+                <input type="submit" id="submit" value="OK" class="submit">
+            </form>
+        </div>
+        <div class="contact-wrapper">
+            <h4>Stay In Touch With PIXEL</h4>
+            <div class="wrapper">
+                <ul class="social-menu">
+                    <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                </ul>
+                <a class="contact-footer contact-tel" href="#"><i class="fa fa-phone" aria-hidden="true"></i>001-283-4892</a>
+                <a class="contact-footer contact-email" href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i>Send an email</a>
+            </div>
+        </div>
+      
+            <div class="image-footer">
+                <img src="~/Images/3.png" alt="Women">
+            </div>
+  
+</section>

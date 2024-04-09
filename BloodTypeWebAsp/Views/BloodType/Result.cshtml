@@ -1,0 +1,77 @@
+﻿@using BloodTypeWeb.Models
+@model ChildBloodTypeRhFactorResultModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation Results</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alice&display=swap" rel="stylesheet">
+    <style>
+        @@import url('https://fonts.googleapis.com/css2?family=Alice&display=swap');
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Alice,sans-serif;
+            overflow: hidden;
+        }
+
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .results-container {
+            position: relative;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            margin: 5% auto;
+            max-width: 600px;
+            color: black; 
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="~/Images/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="container-fluid">
+        <div class="results-container">
+            <h2>Possible Child Blood Types</h2>
+            @foreach (var item in Model.ChildBloodTypePercentages)
+            {
+                <p>@item.Key: @item.Value%</p>
+            }
+
+            <h2>Possible Child Rh Factors</h2>
+            @foreach (var item in Model.ChildRhFactorPercentages)
+            {
+                <p>@item.Key: @item.Value%</p>
+            }
+        </div>
+    </div>
+</body>
+</html>
+

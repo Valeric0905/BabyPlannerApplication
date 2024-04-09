@@ -1,0 +1,87 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - YourAppName</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        .navbar {
+            position: relative;
+            z-index: 2; 
+        }
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .container {
+            position: relative;
+            z-index: 1; 
+        }
+        .login-logout-card {
+            background-color: lavender;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: rgba(230, 230, 250, 0.9); 
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="~/Images/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card login-logout-card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/identity/account/login">Log In</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/identity/account/Register">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(function () {
+            const currentPage = location.pathname.toLowerCase();
+            $('.nav-tabs .nav-item .nav-link').each(function () {
+                const $this = $(this);
+                if (currentPage.indexOf($this.attr('href').toLowerCase()) !== -1) {
+                    $this.addClass('active');
+                }
+            });
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
